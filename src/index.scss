@@ -1,0 +1,153 @@
+@import "normalized.css";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  background: #e5f0f1;
+  color: #002626;
+}
+
+button {
+  padding: 4px 8px;
+  font-weight: bold;
+  background: rgb(241, 6, 6);
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgb(0 0 0 / 20%);
+  &:hover {
+    background: rgb(155, 0, 0);
+  }
+  &:disabled {
+    opacity: 0.1;
+    cursor: auto;
+  }
+}
+
+.game {
+  width: 100%;
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .match-id {
+    align-self: end;
+  }
+  .main {
+    margin-bottom: 40px;
+    text-align: center;
+    .score-to-win {
+      span {
+        background: crimson;
+        color: #fff;
+        padding: 8px;
+        border-radius: 5px;
+        font-size: 18px;
+      }
+    }
+  }
+  .players {
+    display: flex;
+    flex-direction: column;
+
+    .player-card {
+      margin: 10px;
+      padding: 8px;
+      border: 2px solid #a19898;
+      border-radius: 5px;
+      box-shadow: 1px 1px 3px rgba($color: #000000, $alpha: 0.25);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #a6fcdb;
+      .player-name-img-wrapper {
+        display: flex;
+        align-items: center;
+        .name {
+          order: 2;
+          font-weight: bold;
+        }
+        .avatar {
+          order: 1;
+          max-width: 25%;
+          background: #ebdfdf;
+          border-radius: 100%;
+          overflow: hidden;
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .score-wrapper {
+        display: flex;
+        flex-direction: column;
+        .score {
+          margin-bottom: 10px;
+          span {
+            background: crimson;
+            color: #fff;
+            padding: 2px 4px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+    .active-player {
+      border: 5px solid #0b97f5;
+    }
+    .winner {
+      animation: pulse 2.5s ease-in-out infinite;
+      border: 5px solid crimson;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .game {
+    button {
+      width: 120px;
+    }
+    .players {
+      flex-direction: row;
+
+      .player-card {
+        padding: 15px 0;
+        flex-direction: column;
+        .score-wrapper {
+          align-items: center;
+        }
+
+        .player-name-img-wrapper {
+          margin-bottom: 25px;
+          flex-direction: column;
+          .avatar {
+            margin-bottom: 20px;
+            max-width: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// animation
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
